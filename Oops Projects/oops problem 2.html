@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!--problem:2-->
+<script>
+    class Shape {
+        constructor(color) {
+            this.color = color;
+        }
+        getColor() {
+            return this.color;
+        }
+    }
+
+    class Circle extends Shape {
+        constructor(color, radius) {
+            super(color);
+            this.radius = radius;
+        }
+    }
+
+    class ColoredCircle extends Circle {
+        constructor(color, radius) {
+            super(color, radius);
+        }
+    }
+
+    let coloredCircle = new ColoredCircle('blue', 5);
+    console.log(coloredCircle.getColor());
+</script>
+
+<!--***Explanation***-->
+<!--
+    1.In this class problem have three different classes the first on having the class name Shape and constructor of "this .name"which have color variable and function called "getcolor()"
+    2.The second class "Circle" is only having constructor and extends the Shape value in it with using "super" the shape function color variable called in first before the "this.radius".
+    3.The last one is constrcted same with extending the"Circle" and super the both classes variables in i nut the Circle and ColoredCircle not having any of the function in use.
+    4.now take the variable "coloredcircle" and putting the to values in the class we want to call. and adding the value "blue" and "5"
+    5.After that when consoling the variable and calling the function in it "getColor()" we see the function called but it not run the value of the class ColoredCircle which having the color and radius both but there is not any function exist in that class for the when consoled that the function run of class firstone "Shape".
+    6.It only take ColoredCircle as class and the getColor() as function , there is ColoredCircle having two value "blue" for color and 5 for radius just because of only color present in the function radius will not be shown.
+
+    Output:- Blue
+-->

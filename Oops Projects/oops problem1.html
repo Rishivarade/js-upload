@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!--problem:1-->
+<script>
+
+    class Animal {
+        constructor(name) {
+            this.name = name;
+        }
+        speak() {
+            console.log(`${this.name} makes a noise.`);
+        }
+    }
+
+    class Dog extends Animal {
+        speak() {
+            console.log(`${this.name} barks.`);
+        }
+    }
+
+    let dog = new Dog('Buddy');
+    dog.speak();
+</script>
+
+<!--*** explanation***-->
+<!--
+    1.this is the code for javascript class program in this we can learn the simple class problem use.
+    2.first we make a class which have Animal name which has single value of this.name in constructor.afterwords thats construct allows to return it in console or web browser output.
+    3.in this.name consist the string with text "makes a noise".
+    4.as same as animal class to which also allow in dog class to put value or extends the value.which also having the similar function called speak().Which also have the barks value in string.{speak()}
+    5.when e take a new variable dog and there we called the dog class which having string 'Buddy'.and in the dog variable we called the speak function just because of the Dog class used in variable the Dog class string value runs and the function which hold same value in Dog class extends the value of constructor in the Dog class by use extends code which mean the construct run in both class.{ let dog = new Dog('Buddy')}
+    6.after console of dog.speak code runs the output of Dog class as 'Buddy barks.'."this.name" used in both classes.
+     output:- Buddy barks.
+-->

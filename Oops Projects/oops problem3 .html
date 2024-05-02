@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!--problem:3-->
+<script>
+
+    class Vehicle {
+        constructor(make, model) {
+            this.make = make;
+            this.model = model;
+        }
+        getInfo() {
+            return `Make: ${this.make}, Model: ${this.model}`;
+        }
+    }
+
+    class Car extends Vehicle {
+        constructor(make, model, year) {
+            super(make, model);
+            this.year = year;
+        }
+        getInfo() {
+            return `${super.getInfo()}, Year: ${this.year}`;
+        }
+    }
+
+    let myCar = new Car('Toyota', 'Camry', 2020);
+    console.log(myCar.getInfo());
+</script>
+
+<!--***Explaination***-->
+<!--
+    1.In this problem there is two classes one is Vehivle and other is Car.The Vehicle class having constructor with two variable values make and model, and return that variable in "return" as getInfo() function.
+    2.The car class extends the Vehicle class in it and constructor addin one more variable with super the Vehicle() content.now there is three value putups in Car class,(make,model,year).
+    3.By returning getinfo() function of Vehicle in Car class by super for calling variables in this.
+    4.Now let create one variable myCar to access the value of variable (make,model,year).By taking new Car class adding three value for three variables as  ('toyota','camry',2020).and return of model.
+    5.If we console the getinfo() function in on the Car class which already having the value and it also extends tih super of Vehicle information it may results as (make,model,year) with value ('toyota','camry',2020) in console.
+     
+    Output:- make:toyota,made:camry,year:2020
+-->
