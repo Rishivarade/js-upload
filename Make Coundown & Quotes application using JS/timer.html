@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            color: white;
+            background-image: url('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736881_640.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .main{
+            position: absolute;
+            top: 35%;
+            left: 7%;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .timer-h1 {
+            font-size: 60px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .btn2 {
+            padding: 10px 20px;
+            background: linear-gradient(rgb(123, 54, 235), rgba(244, 9, 17));
+            color: white;
+            font-weight: 700;
+            border-radius: 20px 20px;
+        }
+
+        .quotes {
+            width: 600px;
+            height: 250px;
+            margin: auto;
+            padding: 15px;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h2>Click On Button Given Below </h2>
+        <p> ( Only One Min Timer Is Run )</p>
+
+        <h1 class="timer-h1">
+        </h1>
+        <button class="btn2" id="btn">
+            Run Timer
+        </button>
+        <button class="btn2" id="btn2">Stop</button>
+
+    </div>
+    
+    <!-- <button class="touch">Click Me</button> -->
+    <script>
+
+        let btn = document.getElementById("btn")
+        let btn2 = document.getElementById("btn2")
+
+        btn.addEventListener("click", () => {
+            let timer = 60;
+            stop = setInterval(() => {
+                timer--
+                if (timer < 0) {
+                    clearInterval(id)
+                }
+                let id = document.querySelector("h1").innerText = " 00 :" + " " + timer
+            }, 1000)
+        })
+    
+    </script>
+</body>
+
+</html>

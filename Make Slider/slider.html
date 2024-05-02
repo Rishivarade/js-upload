@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js Slider</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        img {
+            position: relative;
+        }
+
+        h2 {
+            position: absolute;
+            width: 80%;
+            bottom: 15%;
+            left: 10%;
+            font-size: 25px;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JAVASCRIPT SLIDER</h1>
+    <img src="" alt="" width="100%" height="560px">
+    <h2>
+        <marquee behavior="" direction="right">DRAGON BALL SUPER</marquee>
+    </h2>
+</body>
+
+</html>
+<script>
+    let arr = ["https://images5.alphacoders.com/132/1329226.jpeg", "https://i.pinimg.com/originals/85/4b/d0/854bd088302a0f565f61e980271263bf.jpg", "https://i.pinimg.com/originals/d8/b5/b2/d8b5b26afa4e59cb2717a6634bd2c514.gif", "https://images7.alphacoders.com/909/909480.jpg", "https://images3.alphacoders.com/806/806201.png"];
+    let currentindex = 0;
+    setInterval(() => {
+        currentindex = (currentindex + 1) % arr.length;
+        document.querySelector("img").src = arr[currentindex];
+        console.log(currentindex);
+    }, 2000)
+</script>
