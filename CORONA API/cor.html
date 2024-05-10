@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-Statics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #4d9ae7;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            
+        }
+
+        main {
+            padding: 20px;
+           
+        }
+
+        section {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            background-image:linear-gradient(rgb(173, 196, 238), rgba(135, 162, 250, 0.827) 0%), url('https://d1whtlypfis84e.cloudfront.net/guides/wp-content/uploads/2020/03/25124500/shutterstock_1623031354.jpg');
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #343a40;
+            font-size: 20px;
+        }
+
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .stats-table th,
+        .stats-table td {
+            padding: 8px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .stats-table th {
+          
+            color: white;
+            font-size: 18px;
+        }
+
+        .stats-table td {
+            font-size: 16px;
+            color:white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Stats</h1>
+    </header>
+    <main>
+        <section id="global">
+            <h2>Global</h2>
+            <table class="stats-table" style="text-align: left;">
+                <tr>
+                    <th>Total Cases</th>
+                    <td id="global-cases"></td>
+                </tr>
+                <tr>
+                    <th>Total Deaths</th>
+                    <td id="global-deaths"></td>
+                </tr>
+                <tr>
+                    <th>Total Recoveries</th>
+                    <td id="global-recoveries"></td>
+                </tr>
+                <tr>
+                    <th>Total Foreign</th>
+                    <td id="global-foreign"></td>
+                </tr>
+            </table>
+        </section>
+        <section id="regional-stats">
+            <h2>Regional</h2>
+            <table class="stats-table">
+                <thead style="text-align: left;">
+                    <tr>
+                        <th>Region</th>
+                        <th>Total Cases</th>
+                        <th>Total Deaths</th>
+                        <th>Total Recoveries</th>
+                        <th>Total Foreign</th>
+                    </tr>
+                </thead>
+                <tbody id="regional-list" style="text-align: left;"></tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('https://api.rootnet.in/covid19-in/stats/latest')
+                .then(response => response.json())
+                .then(data => {
+                    const globalStats = data.data.summary;
+                    const regionalStats = data.data.regional;
+
+                    // Display global statistics
+                    document.getElementById('global-cases').textContent = globalStats.total;
+                    document.getElementById('global-deaths').textContent = globalStats.deaths;
+                    document.getElementById('global-recoveries').textContent = globalStats.discharged;
+                    document.getElementById('global-foreign').textContent = globalStats.foreign;
+
+                    // Display regional statistics
+                    const regionalList = document.getElementById('regional-list');
+                    regionalStats.forEach(region => {
+                        const row = regionalList.insertRow();
+                        row.innerHTML = `
+                            <td>${region.loc}</td>
+                            <td>${region.totalConfirmed}</td>
+                            <td>${region.deaths}</td>
+                            <td>${region.discharged}</td>
+                            <td>${region.confirmedCasesForeign}</td>
+                        `;
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
+</body>
+
+</html>
