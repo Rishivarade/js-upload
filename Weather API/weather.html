@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .email, .first , .last {
+            border-radius: 5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 4px;
+            outline: none;
+            border: 2px solid black ;
+            background-color: lightblue;
+        }  
+        .card {
+            background-color: rgb(140, 241, 140);   
+            width: 30%;
+            height: 60%;
+            margin: auto;
+        }
+        .img {
+            width: 30%;
+            height:50%;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(252, 203, 130);">
+    <div class="container" style="display: flex;text-align:center;flex-wrap: wrap;gap: 5px;">
+    </div>
+</body>
+</html>
+<script>
+    function FetchData(){
+        fetch("http://localhost:3000/data")
+        .then((res)=>res.json())
+        .then((data)=>list(data)
+        )
+        .catch((err)=>console.log(err))
+    }
+    FetchData()
+
+    function list(data){
+        const store=data.map((el)=>Singlecard(el.email,el.first_name,el.last_name,el.avatar))
+        document.querySelector(".container").innerHTML=store.join("")
+
+    }
+    function Singlecard(email,first_name,last_name,avatar){
+        let card=
+       `
+       <div class="card" style="border:1px solid green;">
+            <input type="text" class="email" value="${email}"><br>
+            <input type="text" class="first" value="${first_name}"><br>
+            <input type="" class="last" value="${last_name}"><br><br>
+            <img src="${avatar}" alt="" style="border:2px solid black;" class="img">
+            </div>
+
+        </div>
+       `
+       return card
+    }
+</script>
